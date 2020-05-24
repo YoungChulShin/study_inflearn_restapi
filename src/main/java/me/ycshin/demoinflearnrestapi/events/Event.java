@@ -2,16 +2,15 @@ package me.ycshin.demoinflearnrestapi.events;
 
 import lombok.*;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
-@EqualsAndHashCode(of = "id")
+@Builder @NoArgsConstructor @AllArgsConstructor
+@Getter @Setter @EqualsAndHashCode(of = "id")
+@Entity
 public class Event {
 
+    @Id @GeneratedValue
     private Integer id;
     private String name;
     private String description;
@@ -25,6 +24,6 @@ public class Event {
     private int limitOfEnrollment;
     private boolean offLine;
     private boolean free;
+    @Enumerated(EnumType.STRING)
     private EventStatus eventStatus;
-
 }
